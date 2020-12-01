@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Carl Huack, Peter Hackley, Hubert Shon",
+  "author": "Carl Hauck, Peter Hackley, Hubert Shon",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
