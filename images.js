@@ -10,9 +10,16 @@ const { Pool } = require("pg");
 //   ssl: isProduction
 // });
 
+// const pool = new Pool({
+//   user: 'me',
+//   host: 'localhost',
+//   database: 'greeting_card_backend',
+//   port: 5432
+// });
+
 const pool = new Pool({
-  user: 'me',
-  host: 'localhost',
+  user: `${process.env.USER}`,
+  host: `${process.env.HOST}`,
   database: `${process.env.DATABASE_URL}`,
   port: 5432
 });
