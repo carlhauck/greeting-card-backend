@@ -13,7 +13,7 @@ const { Pool } = require("pg");
 const pool = new Pool({
   user: 'me',
   host: 'localhost',
-  database: 'greeting_card_backend',
+  database: `${process.env.DATABASE_URL}`,
   port: 5432
 });
 
