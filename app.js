@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const db = require("/images");
+const db = require("./images");
 var port = process.env.PORT || 3000;
 var cors = require('cors');
 

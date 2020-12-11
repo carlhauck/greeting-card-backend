@@ -1,32 +1,22 @@
 require('dotenv').config();
 const { Pool } = require("pg");
 
-// Code for Production Server
-// const isProduction = process.env.NODE_ENV === 'production';
-// const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
+const isProduction = process.env.NODE_ENV === 'production';
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+const connectionString = process.env.DATABASE_URL;
+
+const pool = (isProduction)
+  ? new Pool({
+    connectionString: connectionString,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  })
+  : new Pool({
+    connectionString: connectionString,
+  });
 
 pool.connect();
-
-// const pool = new Pool({
-//   user: 'me',
-//   host: 'localhost',
-//   database: 'greeting_card_backend',
-//   port: 5432
-// });
-
-// const pool = new Pool({
-//   user: `${process.env.USER}`,
-//   host: `${process.env.HOST}`,
-//   database: `${process.env.DATABASE_URL}`,
-//   port: 5432
-// });
 
 const getImages = (req, res) => {
   pool.query("SELECT * FROM images;", (error, result) => {
